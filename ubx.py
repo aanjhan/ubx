@@ -146,7 +146,8 @@ MSGFMT = {
         [8, "<ihBx", ["ITOW", "Week", "NSV"], 24, "<ddfBbbB", ["CPMes", "PRMes", "DOMes", "SV", "MesQI", "CNO", "LLI"]],
     ("RXM-SVSI", None) :
         [8, "<ihBB", ["ITOW", "Week", "NumVis", "NumSv"], 6, "<BBhbB", ["SVID", "SVFlag", "Azim", "Elev", "Age"]],
-# RXM-SFRB - Subframe buffer
+    ("RXM-SFRB", 42) :
+        ["<BBiiiiiiiiii", ["CHN", "SVID", "DWRD0", "DWRD1", "DWRD2", "DWRD3", "DWRD4", "DWRD5", "DWRD6", "DWRD7", "DWRD8", "DWRD9"]],
     ("RXM-ALM", 1) :
         ["<B", ["SVID"]],
     ("RXM-ALM", 8)  :
