@@ -346,6 +346,7 @@ class Parser():
 
     def sendraw(self, data):
         #print("write %s" % repr(data))
+        #print("write %s" % " ".join(["%02x" % ord(x) for x in data]))
         os.write(self.fd, data)
 
     def checksum( self, msg ):
