@@ -263,6 +263,7 @@ MSGFMT_INV = dict( [ [(CLIDPAIR[clid], le),v + [clid]] for (clid, le),v in MSGFM
 class Parser():
     def __init__(self, callback, device="/dev/ttySAC1"):
         self.callback = callback
+        os.system("stty -F /dev/ttySAC1 raw")
         self.fd = os.open(device, os.O_NONBLOCK | os.O_RDWR)
         try:
             buf = os.read(self.fd, 512) # flush input
