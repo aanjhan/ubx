@@ -228,11 +228,23 @@ MSGFMT = {
 # UPD - Lowlevel memory manipulation
     ("UPD-UPLOAD", 12 + 16) :
         ["<III" + "B"*16, ["StartAddr", "DataSize", "Flags", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13", "B14", "B15"]],
+    ("UPD-UPLOAD", 12 + 1) :
+        ["<III" + "B", ["StartAddr", "DataSize", "Flags", "B0"]],
+    ("UPD-DOWNL", 8 + 1) :
+        ["<II" + "B", ["StartAddr", "Flags", "B0"]],
+    ("UPD-DOWNL", 8) :
+        ["<II", ["StartAddr", "Flags"]],
     ("MON-SCHD", 24) :
         ["<IIIIHHHBB", ["TSKRUN", "TSKSCHD", "TSKOVRR", "TSKREG", "STACK", "STACKSIZE", "CPUIDLE", "FLYSLY", "PTLSLY"]],
 # MON - GPS system statistics
     ("MON-HW", 64 + 8) :
         ["<IIIIHHBBBxI" + ("B" * 32) + "I" + ("x" * 8), ["PinSel", "PinBank", "PinDir", "PinVal", "NoisePerMS", "AGCCnt", "AStatus", "APower", "flags", "useMask", "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31", "PinIRQ"]],
+    ("MON-VER", 40) :
+        ["<30s10s", ["SWVersion", "HWVersion"]],
+    ("MON-IPC", 28) :
+        ["<I16sII", ["HNDLRINST", "LASTEVENT", "IRQINST", "IRQCALL"]],
+    ("MON-EXCEPT", 316) :
+        ["<" + ("I" * 79), ["code", "num", "ur0", "ur1", "ur2", "ur3", "ur4", "ur5", "ur6", "ur7", "ur8", "ur9", "ur10", "ur11", "ur12", "usp", "ulr", "fr8", "fr9", "fr10", "fr11", "fr12", "fsp", "flr", "fspsr", "isp", "ilr", "ispsr", "cpsr", "pc", "us0", "us1", "us2", "us3", "us4", "us5", "us6", "us7", "us8", "us9", "us10", "us11", "us12", "us13", "us14", "us15", "res", "is0", "is1", "is2", "is3", "is4", "is5", "is6", "is7", "is8", "is9", "is10", "is11", "is12", "is13", "is14", "is15", "fs0", "fs1", "fs2", "fs3", "fs4", "fs5", "fs6", "fs7", "fs8", "fs9", "fs10", "fs11", "fs12", "fs13", "fs14", "fs15"]],
     ("AID-INI", 48) :
         ["<iiiIHHIiIIiII", ["X", "Y", "Z", "POSACC", "TM_CFG", "WN", "TOW", "TOW_NS", "TACC_MS", "TACC_NS", "CLKD", "CLKDACC", "FLAGS"]],
     ("AID-DATA", 0) :
