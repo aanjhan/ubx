@@ -30,5 +30,6 @@ def callback(ty, *args):
         
 if __name__ == "__main__":
     t = ubx.Parser(callback)
-    t.send("UPD-UPLOAD", 12 + 16, {"StartAddr" : 0, "DataSize" : 16, "Flags" : 0, "B0" : 0, "B1" : 0, "B2" : 0, "B3" : 0, "B4" : 0, "B5" : 0, "B6" : 0, "B7" : 0, "B8" : 0, "B9" : 0, "B10" : 0, "B11" : 0, "B12" : 0, "B13" : 0, "B14" : 0, "B15" : 0})
+    start = int(sys.argv[1])
+    t.send("UPD-UPLOAD", 12 + 16, {"StartAddr" : start, "DataSize" : 16, "Flags" : 0, "B0" : 0, "B1" : 0, "B2" : 0, "B3" : 0, "B4" : 0, "B5" : 0, "B6" : 0, "B7" : 0, "B8" : 0, "B9" : 0, "B10" : 0, "B11" : 0, "B12" : 0, "B13" : 0, "B14" : 0, "B15" : 0})
     loop.run()
