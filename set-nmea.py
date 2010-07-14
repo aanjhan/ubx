@@ -18,9 +18,9 @@ def callback(ty, packet):
     print("callback %s" % repr([ty, packet]))
     if ty == "CFG-PRT":
         if sys.argv[1] == "on":
-            # NMEA and UBX
-            packet[1]["In_proto_mask"] = 1 + 2
-            packet[1]["Out_proto_mask"] = 1 + 2
+            # NMEA
+            packet[1]["In_proto_mask"] = 1
+            packet[1]["Out_proto_mask"] = 2
         else:
             # only UBX
             packet[1]["In_proto_mask"] = 1
