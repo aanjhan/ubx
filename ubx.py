@@ -280,7 +280,7 @@ class Parser():
             self.fd = os.open(device, os.O_NONBLOCK | os.O_RDWR)
             try:
                 buf = os.read(self.fd, 512) # flush input
-                print("flushed %s" % repr(buf))
+                logging.debug("flushed %s" % repr(buf))
             except:
                 pass
             gobject.io_add_watch(self.fd, gobject.IO_IN, self.cbDeviceReadable)
