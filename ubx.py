@@ -274,8 +274,9 @@ MSGFMT = {
 MSGFMT_INV = dict( [ [(CLIDPAIR[clid], le),v + [clid]] for (clid, le),v in MSGFMT.items() ] )
 
 class Parser():
-    def __init__(self, callback, device="/dev/ttySAC1"):
+    def __init__(self, callback, rawCallback=None, device="/dev/ttySAC1"):
         self.callback = callback
+        self.rawCallback = rawCallback
         if device:
             os.system("stty -F %s raw" % device)
             self.fd = os.open(device, os.O_NONBLOCK | os.O_RDWR)
@@ -292,6 +293,8 @@ class Parser():
     def cbDeviceReadable(self, source, condition):
         data = os.read(source, 512)
         #print("read %s" % repr(data))
+        if self.rawCallback:
+            self.rawCallback(data)
         self.parse(data)
         return True
 
