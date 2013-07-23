@@ -10,7 +10,7 @@ GPLv2
 import struct
 import calendar
 import os
-import gobject
+#import gobject
 import logging
 import sys
 import socket

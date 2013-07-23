@@ -26,15 +26,20 @@ import ubx
 import struct
 import calendar
 import os
-import gobject
+#import gobject
 import logging
 import sys
 import time
 
 def callback(ty, *args):
     print("callback %s %s" % (ty, repr(args)))
-       
+
 if __name__ == "__main__":
+
+    if len(sys.argv) < 2:
+        sys.exit('Usage: %s <Binary filename>' % sys.argv[0])
+
     t = ubx.Parser(callback, device=False)
-    data = sys.stdin.read()
+    binFile = sys.argv[1]
+    data = open(binFile,'r').read()
     t.parse(data)
